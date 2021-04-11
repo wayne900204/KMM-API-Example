@@ -34,11 +34,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = rssAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        getRestaurantData()
+    }
+
+    private fun getRestaurantData() {
         lifecycleScope.launch {
             kotlin.runCatching {
                 restaurantRespository.getRestaurants()
-            }.onSuccess {
-                resModel ->
+            }.onSuccess { resModel ->
                 rssAdapter.feeds = resModel.data
                 rssAdapter.notifyDataSetChanged()
                 GdgLogger.i("HIHIHIHI", resModel.data.toString())

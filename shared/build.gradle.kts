@@ -77,4 +77,9 @@ android {
         minSdkVersion(23)
         targetSdkVersion(30)
     }
+    configurations {
+        create("testApi")
+        create("testDebugApi")
+        create("testReleaseApi")
+    }
 }
